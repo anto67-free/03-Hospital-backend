@@ -16,6 +16,9 @@ const app = express();
 // Configurar cors, es un middleware y seva a ejecutar todas las lineas que siguen hacia abajo
 app.use(cors());
 
+// Lectura y parseo del Body
+app.use( express.json() );
+
 // Base de Datos
 dbConnection();
 
@@ -28,13 +31,10 @@ dbConnection();
 // mongoose.js.com :   https://mongoosejs.com/
 
 // Rutas
-app.get( '/', (req, res) => {
+app.use( '/api/usuarios', require('./routes/usuarios-routes') );
+app.use( '/api/login', require('./routes/auth-routes') );
 
-    res.json({
-        ok: true,
-        msg: 'Hola Mundo'
-    })
-});
+
 
 
 
