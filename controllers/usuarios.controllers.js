@@ -6,12 +6,31 @@ const { generarJWT } = require('../helpers/jwt');
 
 
 const getUsuarios = async(req, res) => {
+    // paginacion capitulo 128
+    const desde = Number(req.query.desde) || 0;
+    console.log(desde);
 
-    const usuarios = await Usuario.find({}, 'nombre apellido google email role');
+    // const usuarios = await Usuario
+    //                         .find({}, 'nombre apellido google email role')
+    //                         .skip( desde )
+    //                         .limit( 5 );
+
+    // const total = await Usuario.countDocuments();
+
+    const [ usuarios, total ] = await Promise.all([
+        Usuario
+            .find({}, 'nombre apellido email role google img')
+            .skip( desde )
+            .limit( 5 ),
+
+        Usuario.countDocuments()    
+    ]);
+
 
     res.json({
         ok: true,
         usuarios,
+        total
         // uid: req.uid
     });
 }
