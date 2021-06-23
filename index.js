@@ -30,6 +30,10 @@ dbConnection();
 // password: GQQJ4SLnyWLmCCRx
 // mongoose.js.com :   https://mongoosejs.com/
 
+// Direcotrio publico
+app.use( express.static ('public') );
+
+
 // Rutas
 app.use( '/api/usuarios', require('./routes/usuarios-routes') );
 app.use( '/api/hospitales', require('./routes/hospitales') );
@@ -49,3 +53,11 @@ app.listen( process.env.PORT, () => {
 
 // repositrio de github
 // git add .
+// git commit -m "Sin seecion 11"
+// git push     (para subirlo a github)
+// git tag      (para ver la versiones en este caso va v0.10.0)
+// git tag -a v0.11.0 -m "fin seccion 11 - CRUD y file Upload"    (para agregar la version)
+// git push --tags        (para subir los tags)
+// git remote -v          (para ver los urls, a continuacion mostrara)
+// origin  https://github.com/anto67-free/03-Hospital-backend.git (fetch)
+// origin  https://github.com/anto67-free/03-Hospital-backend.git (push)
