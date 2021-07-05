@@ -35,12 +35,18 @@ router.post( '/',
 
 // Actualización de usuario (update)
 router.put( '/:id',
-    [],
+    [
+        validarJWT,
+        check('nombre','El nombre del hospital es necesario !!').not().isEmpty(),
+        validarCampos
+        
+    ],
     actualizarHospital
 );
 
 // Borrar usuario (delete)
 router.delete( '/:id',
+    validarJWT,
     borrarHospital
 );
 
