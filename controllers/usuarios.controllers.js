@@ -19,7 +19,7 @@ const getUsuarios = async(req, res) => {
 
     const [ usuarios, total ] = await Promise.all([
         Usuario
-            .find({}, 'nombre apellido email role google img')
+            .find({}, 'nombre email role google img')
             .skip( desde )
             .limit( 5 ),
 
@@ -37,7 +37,7 @@ const getUsuarios = async(req, res) => {
 
 const crearUsuario = async(req, res = response) => {
 
-    const { email, password, nombre, apellido } = req.body;
+    const { email, password, nombre } = req.body;
 
     try {
 

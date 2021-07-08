@@ -51,6 +51,9 @@ app.listen( process.env.PORT, () => {
     console.log('Servidor corriendo en puerto ' + process.env.PORT );
 });
 
+// ejecutar el servidor
+// npm run start:dev
+
 // repositrio de github
 // git add .
 // git commit -m "Sin seecion 11"
